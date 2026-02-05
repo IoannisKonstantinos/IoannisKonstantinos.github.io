@@ -33,23 +33,24 @@
         .sidebar {
             border-right: 1px solid #e0e0e0;
             padding-right: 30px;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- DAS GEOMETRISCHE SYMBOL --- */
+        /* --- SYMBOL --- */
         .logo-container {
             width: 100%;
             display: flex;
-            justify-content: flex-start; /* Linksbuendig in der Sidebar */
+            justify-content: flex-start;
             margin-bottom: 30px;
         }
 
-        /* Das SVG (die Grafik selbst) */
         .geo-symbol {
-            width: 80px;  /* Größe des Symbols */
+            width: 80px;
             height: 80px;
-            stroke: #111; /* Farbe der Linien: Schwarz */
-            stroke-width: 1.5; /* Dicke der Linien: Fein */
-            fill: none;   /* Keine Füllung, nur Linien */
+            stroke: #111;
+            stroke-width: 1.5;
+            fill: none;
         }
 
         .author-name {
@@ -74,15 +75,45 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: #999;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             margin-top: 30px;
             font-weight: 600;
             border-top: 1px solid #eee;
             padding-top: 20px;
         }
 
+        /* --- KEYWORD LISTE (Optimiert für viele Begriffe) --- */
         .keyword-list { list-style: none; padding: 0; margin: 0; }
-        .keyword-list li { font-size: 0.9rem; color: #444; margin-bottom: 8px; border-bottom: 1px solid #f4f4f4; padding-bottom: 4px; }
+        
+        .keyword-list li { 
+            font-size: 0.85rem; /* Etwas kleiner damit alle passen */
+            color: #444; 
+            margin-bottom: 6px; /* Engerer Abstand */
+            border-bottom: 1px solid #f4f4f4; 
+            padding-bottom: 2px; 
+            line-height: 1.4;
+        }
+
+        .info-text {
+            font-size: 0.9rem; 
+            color: #555; 
+            line-height: 1.6;
+        }
+        
+        .doi-link {
+            color: #111;
+            text-decoration: underline;
+            word-break: break-all;
+        }
+
+        .copyright-box {
+            margin-top: 40px;
+            font-size: 0.75rem;
+            color: #888;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            line-height: 1.4;
+        }
 
         .content { padding-top: 10px; }
 
@@ -121,19 +152,41 @@
 
         <div class="sidebar-label">Keywords</div>
         <ul class="keyword-list">
-            <li>Cosmology</li>
-            <li>General Relativity</li>
-            <li>Metric Time Dilation</li>
+            <li>Density-Time Hypothesis</li>
+            <li>Intrinsic Metric Time Dilation</li>
+            <li>Lapse Function</li>
+            <li>Geometrodynamics</li>
+            <li>Modified Friedmann Equations</li>
+            <li>Time Relaxation</li>
+            <li>Horizon Problem</li>
+            <li>Flatness Problem</li>
             <li>Dark Energy</li>
-            <li>Quantum Fluctuations</li>
+            <li>Structure Formation</li>
+            <li>Emergent Time</li>
+            <li>Big Bang</li>
+            <li>Primordial Nucleosynthesis (BBN)</li>
+            <li>Lorentz Invariance</li>
+            <li>Freeze-Out Mechanism</li>
+            <li>Cosmological Constant Alternative</li>
+            <li>Quantum Gravity</li>
         </ul>
 
         <div class="sidebar-label">Document Info</div>
-        <div style="font-size: 0.9rem; color: #555;">
+        <div class="info-text">
             <strong>Published:</strong> 2025<br>
             <strong>Type:</strong> Theoretical Paper<br>
+            
+            <strong>DOI:</strong> <br>
+            <a href="https://doi.org/10.6084/m9.figshare.31029655" class="doi-link" target="_blank">10.6084/m9.figshare.31029655</a>
+            <br><br>
             <strong>License:</strong> Open Access
         </div>
+
+        <div class="copyright-box">
+            Copyright &copy; 2026<br>
+            Ioannis Konstantinos Alonidis
+        </div>
+
     </aside>
 
     <main class="content">
