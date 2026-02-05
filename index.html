@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
         /* --- GRUNDEINSTELLUNGEN --- */
@@ -82,13 +82,12 @@
             padding-top: 20px;
         }
 
-        /* --- KEYWORD LISTE (Optimiert für viele Begriffe) --- */
         .keyword-list { list-style: none; padding: 0; margin: 0; }
         
         .keyword-list li { 
-            font-size: 0.85rem; /* Etwas kleiner damit alle passen */
+            font-size: 0.85rem; 
             color: #444; 
-            margin-bottom: 6px; /* Engerer Abstand */
+            margin-bottom: 6px;
             border-bottom: 1px solid #f4f4f4; 
             padding-bottom: 2px; 
             line-height: 1.4;
@@ -117,7 +116,25 @@
 
         .content { padding-top: 10px; }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-top: 0; line-height: 1.1; margin-bottom: 30px; }
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.8rem; 
+            margin-top: 0; 
+            line-height: 1.1; 
+            margin-bottom: 15px; /* Weniger Abstand, damit Untertitel nah dran ist */
+        }
+
+        /* --- NEU: DER UNTERTITEL STYLE --- */
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;    /* Etwas kleiner als der Titel */
+            font-weight: 300;      /* Dünne, elegante Schrift */
+            color: #555;           /* Dunkles Grau */
+            margin-bottom: 40px;   /* Abstand zum Abstract */
+            line-height: 1.5;
+            border-left: 3px solid #111; /* Kleiner schwarzer Balken links */
+            padding-left: 15px;          /* Abstand zum Balken */
+        }
 
         .abstract-label { font-weight: bold; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 15px; display: inline-block; border-bottom: 2px solid #000; padding-bottom: 5px; }
 
@@ -191,6 +208,10 @@
 
     <main class="content">
         <h1>Intrinsic Metric Time Dilation in Early and Late Cosmology</h1>
+        
+        <div class="subtitle">
+            A Geometrodynamic Solution to the Horizon, Flatness, and Dark Energy Problems
+        </div>
         
         <span class="abstract-label">Abstract</span>
         <div class="abstract-text">
