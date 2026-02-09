@@ -6,9 +6,14 @@
     <meta name="description" content="Intrinsic Metric Time Dilation: A Geometrodynamic Solution to the Horizon, Flatness, and Dark Energy Problems. Theoretical Paper by Ioannis Konstantinos Alonidis.">
     <title>Intrinsic Metric Time Dilation | Ioannis Konstantinos Alonidis</title>
     
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250 5, 90 25, 90 75, 50 95, 10 75, 10 25%22 style=%22fill:none;stroke:black;stroke-width:5%22/></svg>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
         /* --- GRUNDEINSTELLUNGEN --- */
@@ -161,8 +166,69 @@
         .abstract-text { font-family: 'Inter', sans-serif; font-size: 1.1rem; line-height: 1.8; color: #222; text-align: justify; font-weight: 300; }
         .abstract-text p { margin-bottom: 25px; }
 
-        .btn { display: inline-block; background-color: #111; color: #fff; padding: 15px 35px; text-decoration: none; font-weight: 600; margin-top: 40px; border: 1px solid #111; transition: 0.3s; cursor: pointer;}
+        /* --- BUTTONS --- */
+        .button-group { margin-top: 40px; display: flex; gap: 15px; flex-wrap: wrap; }
+
+        .btn { 
+            display: inline-block; 
+            background-color: #111; 
+            color: #fff; 
+            padding: 15px 35px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            border: 1px solid #111; 
+            transition: 0.3s; 
+            cursor: pointer;
+        }
         .btn:hover { background-color: #fff; color: #111; }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #111;
+        }
+        .btn-secondary:hover {
+            background-color: #111;
+            color: #fff;
+        }
+
+        /* --- MODAL (POPUP) FÜR ZITIEREN --- */
+        .modal {
+            display: none; /* Versteckt */
+            position: fixed;
+            z-index: 100;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+        .bibtex-code {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 10px;
+            color: #333;
+        }
 
         /* Verstecke standardmäßig Elemente, die nicht EN sind */
         [lang="de"], [lang="el"] { display: none; }
@@ -170,7 +236,7 @@
         @media (max-width: 800px) {
             .page-wrapper { grid-template-columns: 1fr; gap: 40px; margin: 30px 20px; }
             .sidebar { border-right: none; border-bottom: 1px solid #e0e0e0; padding-bottom: 30px; }
-            .lang-switch { top: -40px; right: 0; } /* Auf Handy oben drüber schieben */
+            .lang-switch { top: -40px; right: 0; }
         }
 
         /* --- DARK MODE (Automatisch) --- */
@@ -186,8 +252,16 @@
             .geo-symbol { stroke: #e0e0e0; }
             .doi-link { color: #8ab4f8; } 
             .abstract-label { border-bottom-color: #e0e0e0; }
+            
+            /* Buttons im Dark Mode */
             .btn { background-color: #e0e0e0; color: #111; border-color: #e0e0e0; }
             .btn:hover { background-color: #111; color: #fff; border-color: #fff; }
+            .btn-secondary { background-color: transparent; color: #e0e0e0; border-color: #e0e0e0; }
+            .btn-secondary:hover { background-color: #e0e0e0; color: #111; }
+
+            /* Modal im Dark Mode */
+            .modal-content { background-color: #1e1e1e; border-color: #444; color: #e0e0e0; }
+            .bibtex-code { background-color: #2a2a2a; border-color: #444; color: #bbb; }
         }
 
     </style>
@@ -299,12 +373,17 @@
             
             <span class="abstract-label">Abstract</span>
             <div class="abstract-text">
-                <p>This work postulates a fundamental and far-reaching modification of the established standard model of cosmology (ΛCDM). The aim is to eliminate the theoretical necessity of a hypothetical scalar Inflaton field, which serves as the primary mechanism for solving initial value problems in modern cosmology, and to replace it with a purely geometric solution.</p>
-                <p>Based on the profound ontological premise that time is not a fundamental background parameter but an emergent property of the spatial fabric (introduced here as the "Density-Time Hypothesis"), a direct, analytical coupling between the local energy density ρ and the time component of the metric tensor g<sub>00</sub> is formulated.</p>
-                <p>It is mathematically rigorously derived within this work that in the limit V → 0 (i.e., in the Planck era), an asymptotic metric time dilation occurs (N ≫ 1). This dilation increases the effective causal horizon d<sub>H,eff</sub> massively. This enables thermodynamic equilibrium across the entire currently observable region of the universe without postulating a superluminal expansion of space.</p>
-                <p>The work also extends the model to the late universe: The observed apparent acceleration is identified as a geometric residue of time relaxation. A quantitative analysis constrains the exponent n of the Lapse function to the range 1 ≤ n ≤ 2 to preserve Primordial Nucleosynthesis (BBN).</p>
+                <p>This work postulates a fundamental and far-reaching modification of the established standard model of cosmology ($\Lambda$CDM). The aim is to eliminate the theoretical necessity of a hypothetical scalar Inflaton field, which serves as the primary mechanism for solving initial value problems in modern cosmology, and to replace it with a purely geometric solution.</p>
+                <p>Based on the profound ontological premise that time is not a fundamental background parameter but an emergent property of the spatial fabric (introduced here as the "Density-Time Hypothesis"), a direct, analytical coupling between the local energy density $\rho$ and the time component of the metric tensor $g_{00}$ is formulated.</p>
+                <p>It is mathematically rigorously derived within this work that in the limit $V \to 0$ (i.e., in the Planck era), an asymptotic metric time dilation occurs ($N \gg 1$). This dilation increases the effective causal horizon $d_{H,\text{eff}}$ massively. This enables thermodynamic equilibrium across the entire currently observable region of the universe without postulating a superluminal expansion of space.</p>
+                <p>Furthermore, it is shown that a dynamic time gradient $\dot{N}/N$ exists, acting relative to the metric expansion of space. This gradient forces a freeze-out of primordial quantum fluctuations, thus providing a natural explanation for structure formation.</p>
+                <p>The work also extends the model to the late universe: The observed apparent acceleration is identified as a geometric residue of time relaxation. A quantitative analysis constrains the exponent $n$ of the Lapse function to the range $1 \le n \le 2$ to preserve Primordial Nucleosynthesis (BBN).</p>
             </div>
-            <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Download Full Paper (PDF)</a>
+            
+            <div class="button-group">
+                <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Download Full Paper (PDF)</a>
+                <button class="btn btn-secondary" onclick="openModal()">Cite this Paper</button>
+            </div>
         </div>
 
         <div lang="de">
@@ -313,12 +392,16 @@
             
             <span class="abstract-label">Zusammenfassung</span>
             <div class="abstract-text">
-                <p>Diese Arbeit postuliert eine fundamentale Modifikation des etablierten Standardmodells der Kosmologie (ΛCDM). Ziel ist es, die theoretische Notwendigkeit eines hypothetischen skalaren Inflaton-Feldes, das als primärer Mechanismus zur Lösung von Anfangswertproblemen dient, zu eliminieren und durch eine rein geometrische Lösung zu ersetzen.</p>
-                <p>Basierend auf der ontologischen Prämisse, dass Zeit kein fundamentaler Hintergrundparameter, sondern eine emergente Eigenschaft des Raumes ist (hier als "Dichte-Zeit-Hypothese" eingeführt), wird eine direkte, analytische Kopplung zwischen der lokalen Energiedichte ρ und der Zeitkomponente des metrischen Tensors g<sub>00</sub> formuliert.</p>
-                <p>Es wird mathematisch rigoros hergeleitet, dass im Grenzwert V → 0 (d.h. in der Planck-Ära) eine asymptotische metrische Zeitdilatation auftritt (N ≫ 1). Diese Dilatation vergrößert den effektiven Kausalhorizont d<sub>H,eff</sub> massiv. Dies ermöglicht ein thermodynamisches Gleichgewicht über den gesamten heute beobachtbaren Bereich des Universums, ohne eine überlichtschnelle Expansion des Raumes postulieren zu müssen.</p>
-                <p>Die Arbeit erweitert das Modell auch auf das späte Universum: Die beobachtete scheinbare Beschleunigung wird als geometrisches Residuum der Zeit-Relaxation identifiziert. Eine quantitative Analyse beschränkt den Exponenten n der Lapse-Funktion auf den Bereich 1 ≤ n ≤ 2, um die Primordiale Nukleosynthese (BBN) zu bewahren.</p>
+                <p>Diese Arbeit postuliert eine fundamentale Modifikation des etablierten Standardmodells der Kosmologie ($\Lambda$CDM). Ziel ist es, die theoretische Notwendigkeit eines hypothetischen skalaren Inflaton-Feldes, das als primärer Mechanismus zur Lösung von Anfangswertproblemen dient, zu eliminieren und durch eine rein geometrische Lösung zu ersetzen.</p>
+                <p>Basierend auf der ontologischen Prämisse, dass Zeit kein fundamentaler Hintergrundparameter, sondern eine emergente Eigenschaft des Raumes ist (hier als "Dichte-Zeit-Hypothese" eingeführt), wird eine direkte, analytische Kopplung zwischen der lokalen Energiedichte $\rho$ und der Zeitkomponente des metrischen Tensors $g_{00}$ formuliert.</p>
+                <p>Es wird mathematisch rigoros hergeleitet, dass im Grenzwert $V \to 0$ (d.h. in der Planck-Ära) eine asymptotische metrische Zeitdilatation auftritt ($N \gg 1$). Diese Dilatation vergrößert den effektiven Kausalhorizont $d_{H,\text{eff}}$ massiv. Dies ermöglicht ein thermodynamisches Gleichgewicht über den gesamten heute beobachtbaren Bereich des Universums, ohne eine überlichtschnelle Expansion des Raumes postulieren zu müssen.</p>
+                <p>Die Arbeit erweitert das Modell auch auf das späte Universum: Die beobachtete scheinbare Beschleunigung wird als geometrisches Residuum der Zeit-Relaxation identifiziert. Eine quantitative Analyse beschränkt den Exponenten $n$ der Lapse-Funktion auf den Bereich $1 \le n \le 2$, um die Primordiale Nukleosynthese (BBN) zu bewahren.</p>
             </div>
-            <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Vollständiges Paper herunterladen (PDF)</a>
+            
+            <div class="button-group">
+                <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Vollständiges Paper herunterladen (PDF)</a>
+                <button class="btn btn-secondary" onclick="openModal()">Zitieren / BibTeX</button>
+            </div>
         </div>
 
         <div lang="el">
@@ -327,22 +410,42 @@
             
             <span class="abstract-label">Περίληψη</span>
             <div class="abstract-text">
-                <p>Η παρούσα εργασία προτείνει μια θεμελιώδη τροποποίηση του καθιερωμένου προτύπου της κοσμολογίας (ΛCDM). Στόχος είναι να εξαλειφθεί η θεωρητική ανάγκη για το υποθετικό βαθμωτό πεδίο Inflaton και να αντικατασταθεί με μια αμιγώς γεωμετρική λύση.</p>
-                <p>Βασιζόμενη στην οντολογική υπόθεση ότι ο χρόνος δεν είναι μια θεμελιώδης παράμετρος υποβάθρου αλλά μια αναδυόμενη ιδιότητα του χώρου (εισάγεται εδώ ως "Υπόθεση Πυκνότητας-Χρόνου"), διατυπώνεται μια άμεση, αναλυτική σύζευξη μεταξύ της τοπικής πυκνότητας ενέργειας ρ και της χρονικής συνιστώσας του μετρικού τανυστή g<sub>00</sub>.</p>
-                <p>Αποδεικνύεται μαθηματικά ότι στο όριο V → 0 (δηλαδή στην εποχή Planck), εμφανίζεται μια ασυμπτωτική μετρική διαστολή χρόνου (N ≫ 1). Αυτή η διαστολή αυξάνει τον αποτελεσματικό αιτιώδη ορίζοντα d<sub>H,eff</sub> μαζικά. Αυτό επιτρέπει τη θερμοδυναμική ισορροπία σε ολόκληρη την παρατηρήσιμη περιοχή του σύμπαντος χωρίς να απαιτείται υπερφωτεινή διαστολή του χώρου.</p>
-                <p>Η εργασία επεκτείνει επίσης το μοντέλο στο ύστερο σύμπαν: Η παρατηρούμενη φαινομενική επιτάχυνση αναγνωρίζεται ως γεωμετρικό κατάλοιπο της χαλάρωσης του χρόνου (time relaxation). Μια ποσοτική ανάλυση περιορίζει τον εκθέτη n της συνάρτησης Lapse στο εύρος 1 ≤ n ≤ 2 για τη διατήρηση της Πρωταρχικής Πυρηνοσύνθεσης (BBN).</p>
+                <p>Η παρούσα εργασία προτείνει μια θεμελιώδη τροποποίηση του καθιερωμένου προτύπου της κοσμολογίας ($\Lambda$CDM). Στόχος είναι να εξαλειφθεί η θεωρητική ανάγκη για το υποθετικό βαθμωτό πεδίο Inflaton και να αντικατασταθεί με μια αμιγώς γεωμετρική λύση.</p>
+                <p>Βασιζόμενη στην οντολογική υπόθεση ότι ο χρόνος δεν είναι μια θεμελιώδης παράμετρος υποβάθρου αλλά μια αναδυόμενη ιδιότητα του χώρου (εισάγεται εδώ ως "Υπόθεση Πυκνότητας-Χρόνου"), διατυπώνεται μια άμεση, αναλυτική σύζευξη μεταξύ της τοπικής πυκνότητας ενέργειας $\rho$ και της χρονικής συνιστώσας του μετρικού τανυστή $g_{00}$.</p>
+                <p>Αποδεικνύεται μαθηματικά ότι στο όριο $V \to 0$ (δηλαδή στην εποχή Planck), εμφανίζεται μια ασυμπτωτική μετρική διαστολή χρόνου ($N \gg 1$). Αυτή η διαστολή αυξάνει τον αποτελεσματικό αιτιώδη ορίζοντα $d_{H,\text{eff}}$ μαζικά. Αυτό επιτρέπει τη θερμοδυναμική ισορροπία σε ολόκληρη την παρατηρήσιμη περιοχή του σύμπαντος χωρίς να απαιτείται υπερφωτεινή διαστολή του χώρου.</p>
+                <p>Η εργασία επεκτείνει επίσης το μοντέλο στο ύστερο σύμπαν: Η παρατηρούμενη φαινομενική επιτάχυνση αναγνωρίζεται ως γεωμετρικό κατάλοιπο της χαλάρωσης του χρόνου (time relaxation). Μια ποσοτική ανάλυση περιορίζει τον εκθέτη $n$ της συνάρτησης Lapse στο εύρος $1 \le n \le 2$ για τη διατήρηση της Πρωταρχικής Πυρηνοσύνθεσης (BBN).</p>
             </div>
-            <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Λήψη πλήρους εγγράφου (PDF)</a>
+            
+            <div class="button-group">
+                <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Λήψη πλήρους εγγράφου (PDF)</a>
+                <button class="btn btn-secondary" onclick="openModal()">Παράθεση / BibTeX</button>
+            </div>
         </div>
 
     </main>
+</div>
+
+<div id="citeModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <strong>BibTeX Entry</strong>
+        <div class="bibtex-code">@article{Alonidis2025,
+  author = {Alonidis, Ioannis Konstantinos},
+  title = {Intrinsic Metric Time Dilation in Early and Late Cosmology},
+  year = {2025},
+  doi = {10.6084/m9.figshare.31029655},
+  url = {https://doi.org/10.6084/m9.figshare.31029655}
+}</div>
+        <br>
+        <small>Copy this text into your LaTeX reference manager.</small>
+    </div>
 </div>
 
 <script>
     function switchLang(lang) {
         // 1. Alle Sprachen ausblenden
         document.querySelectorAll('[lang="en"], [lang="de"], [lang="el"]').forEach(el => {
-            if (el.tagName === 'DIV' || el.tagName === 'SPAN') { // Nur unsere Container
+            if (el.tagName === 'DIV' || el.tagName === 'SPAN') { 
                 el.style.display = 'none';
             }
         });
@@ -352,13 +455,29 @@
              el.style.display = 'block';
         });
 
-        // 3. Buttons aktualisieren (Fettgedruckt/Unterstrichen)
+        // 3. Buttons aktualisieren
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.remove('active');
             if (btn.innerText.toLowerCase() === lang) {
                 btn.classList.add('active');
             }
         });
+    }
+
+    // Modal Funktionen
+    function openModal() {
+        document.getElementById('citeModal').style.display = 'flex';
+    }
+    function closeModal() {
+        document.getElementById('citeModal').style.display = 'none';
+    }
+    
+    // Schließen wenn man daneben klickt
+    window.onclick = function(event) {
+        var modal = document.getElementById('citeModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 
     // Beim Starten Englisch anzeigen (Standard)
