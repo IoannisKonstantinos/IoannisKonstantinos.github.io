@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Intrinsic Metric Time Dilation: A Geometrodynamic Solution to the Horizon, Flatness, and Dark Energy Problems. Theoretical Paper by Ioannis Konstantinos Alonidis.">
     <title>Intrinsic Metric Time Dilation | Ioannis Konstantinos Alonidis</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -132,7 +133,6 @@
             color: #555;
             margin-bottom: 40px;
             line-height: 1.5;
-            /* Hier ist kein Border mehr */
         }
 
         .abstract-label { font-weight: bold; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 15px; display: inline-block; border-bottom: 2px solid #000; padding-bottom: 5px; }
@@ -147,6 +147,50 @@
             .page-wrapper { grid-template-columns: 1fr; gap: 40px; margin: 30px 20px; }
             .sidebar { border-right: none; border-bottom: 1px solid #e0e0e0; padding-bottom: 30px; }
         }
+
+        /* --- DARK MODE (Automatisch) --- */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+
+            /* Linien und Rahmen abdunkeln */
+            .sidebar { border-right-color: #333; }
+            .sidebar-label { border-top-color: #333; }
+            .keyword-list li { border-bottom-color: #333; color: #ccc; }
+            .copyright-box { border-top-color: #333; }
+            
+            /* Mobile Ansicht: Linie unten an der Sidebar */
+            @media (max-width: 800px) {
+                .sidebar { border-bottom-color: #333; }
+            }
+
+            /* Textfarben anpassen */
+            .subtitle, .author-title, .info-text, .copyright-box { color: #b0b0b0; }
+            .abstract-text { color: #d0d0d0; }
+            
+            /* Symbol anpassen */
+            .geo-symbol { stroke: #e0e0e0; }
+
+            /* Links und Label */
+            .doi-link { color: #8ab4f8; } 
+            .abstract-label { border-bottom-color: #e0e0e0; }
+
+            /* Button invertieren */
+            .btn { 
+                background-color: #e0e0e0; 
+                color: #111; 
+                border-color: #e0e0e0; 
+            }
+            .btn:hover { 
+                background-color: #111; 
+                color: #fff; 
+                border-color: #fff; 
+            }
+        }
+        /* --- ENDE DARK MODE --- */
+
     </style>
 </head>
 <body>
