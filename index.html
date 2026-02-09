@@ -29,8 +29,31 @@
             max-width: 1100px;
             margin: 60px 20px;
             width: 100%;
+            position: relative;
         }
 
+        /* --- SPRACHUMSCHALTER --- */
+        .lang-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .lang-btn {
+            cursor: pointer;
+            opacity: 0.4;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .lang-btn:hover { opacity: 0.7; }
+        .lang-btn.active { opacity: 1; text-decoration: underline; }
+
+        /* --- SIDEBAR --- */
         .sidebar {
             border-right: 1px solid #e0e0e0;
             padding-right: 30px;
@@ -38,7 +61,6 @@
             flex-direction: column;
         }
 
-        /* --- SYMBOL --- */
         .logo-container {
             width: 100%;
             display: flex;
@@ -125,7 +147,6 @@
             margin-bottom: 15px;
         }
 
-        /* --- UNTERTITEL (Ohne Balken) --- */
         .subtitle {
             font-family: 'Inter', sans-serif;
             font-size: 1.25rem;
@@ -140,64 +161,48 @@
         .abstract-text { font-family: 'Inter', sans-serif; font-size: 1.1rem; line-height: 1.8; color: #222; text-align: justify; font-weight: 300; }
         .abstract-text p { margin-bottom: 25px; }
 
-        .btn { display: inline-block; background-color: #111; color: #fff; padding: 15px 35px; text-decoration: none; font-weight: 600; margin-top: 40px; border: 1px solid #111; transition: 0.3s; }
+        .btn { display: inline-block; background-color: #111; color: #fff; padding: 15px 35px; text-decoration: none; font-weight: 600; margin-top: 40px; border: 1px solid #111; transition: 0.3s; cursor: pointer;}
         .btn:hover { background-color: #fff; color: #111; }
+
+        /* Verstecke standardmäßig Elemente, die nicht EN sind */
+        [lang="de"], [lang="el"] { display: none; }
 
         @media (max-width: 800px) {
             .page-wrapper { grid-template-columns: 1fr; gap: 40px; margin: 30px 20px; }
             .sidebar { border-right: none; border-bottom: 1px solid #e0e0e0; padding-bottom: 30px; }
+            .lang-switch { top: -40px; right: 0; } /* Auf Handy oben drüber schieben */
         }
 
         /* --- DARK MODE (Automatisch) --- */
         @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #121212;
-                color: #e0e0e0;
-            }
-
-            /* Linien und Rahmen abdunkeln */
+            body { background-color: #121212; color: #e0e0e0; }
             .sidebar { border-right-color: #333; }
             .sidebar-label { border-top-color: #333; }
             .keyword-list li { border-bottom-color: #333; color: #ccc; }
             .copyright-box { border-top-color: #333; }
-            
-            /* Mobile Ansicht: Linie unten an der Sidebar */
-            @media (max-width: 800px) {
-                .sidebar { border-bottom-color: #333; }
-            }
-
-            /* Textfarben anpassen */
+            @media (max-width: 800px) { .sidebar { border-bottom-color: #333; } }
             .subtitle, .author-title, .info-text, .copyright-box { color: #b0b0b0; }
             .abstract-text { color: #d0d0d0; }
-            
-            /* Symbol anpassen */
             .geo-symbol { stroke: #e0e0e0; }
-
-            /* Links und Label */
             .doi-link { color: #8ab4f8; } 
             .abstract-label { border-bottom-color: #e0e0e0; }
-
-            /* Button invertieren */
-            .btn { 
-                background-color: #e0e0e0; 
-                color: #111; 
-                border-color: #e0e0e0; 
-            }
-            .btn:hover { 
-                background-color: #111; 
-                color: #fff; 
-                border-color: #fff; 
-            }
+            .btn { background-color: #e0e0e0; color: #111; border-color: #e0e0e0; }
+            .btn:hover { background-color: #111; color: #fff; border-color: #fff; }
         }
-        /* --- ENDE DARK MODE --- */
 
     </style>
 </head>
 <body>
 
 <div class="page-wrapper">
+    
+    <div class="lang-switch">
+        <span class="lang-btn active" onclick="switchLang('en')">EN</span>
+        <span class="lang-btn" onclick="switchLang('de')">DE</span>
+        <span class="lang-btn" onclick="switchLang('el')">EL</span>
+    </div>
+
     <aside class="sidebar">
-        
         <div class="logo-container">
             <svg class="geo-symbol" viewBox="0 0 100 100">
                 <polygon points="50 5, 90 25, 90 75, 50 95, 10 75, 10 25" />
@@ -210,32 +215,70 @@
         <div class="author-name">Ioannis Konstantinos Alonidis</div>
         <div class="author-title">Medical Laboratory Technician</div>
 
-        <div class="sidebar-label">Keywords</div>
-        <ul class="keyword-list">
-            <li>Density-Time Hypothesis</li>
-            <li>Intrinsic Metric Time Dilation</li>
-            <li>Lapse Function</li>
-            <li>Geometrodynamics</li>
-            <li>Modified Friedmann Equations</li>
-            <li>Time Relaxation</li>
-            <li>Horizon Problem</li>
-            <li>Flatness Problem</li>
-            <li>Dark Energy</li>
-            <li>Structure Formation</li>
-            <li>Emergent Time</li>
-            <li>Big Bang</li>
-            <li>Primordial Nucleosynthesis (BBN)</li>
-            <li>Lorentz Invariance</li>
-            <li>Freeze-Out Mechanism</li>
-            <li>Cosmological Constant Alternative</li>
-            <li>Quantum Gravity</li>
-        </ul>
+        <div lang="en">
+            <div class="sidebar-label">Keywords</div>
+            <ul class="keyword-list">
+                <li>Density-Time Hypothesis</li>
+                <li>Intrinsic Metric Time Dilation</li>
+                <li>Lapse Function</li>
+                <li>Geometrodynamics</li>
+                <li>Modified Friedmann Equations</li>
+                <li>Time Relaxation</li>
+                <li>Horizon Problem</li>
+                <li>Flatness Problem</li>
+                <li>Dark Energy</li>
+                <li>Structure Formation</li>
+                <li>Emergent Time</li>
+                <li>Big Bang</li>
+                <li>Primordial Nucleosynthesis (BBN)</li>
+                <li>Quantum Gravity</li>
+            </ul>
+        </div>
+
+        <div lang="de">
+            <div class="sidebar-label">Schlüsselwörter</div>
+            <ul class="keyword-list">
+                <li>Dichte-Zeit-Hypothese</li>
+                <li>Intrinsische Metrische Zeitdilatation</li>
+                <li>Lapse-Funktion</li>
+                <li>Geometrodynamik</li>
+                <li>Modifizierte Friedmann-Gleichungen</li>
+                <li>Zeit-Relaxation</li>
+                <li>Horizontproblem</li>
+                <li>Flachheitsproblem</li>
+                <li>Dunkle Energie</li>
+                <li>Strukturbildung</li>
+                <li>Emergente Zeit</li>
+                <li>Urknall</li>
+                <li>Primordiale Nukleosynthese (BBN)</li>
+                <li>Quantengravitation</li>
+            </ul>
+        </div>
+
+        <div lang="el">
+            <div class="sidebar-label">Λέξεις-Κλειδιά</div>
+            <ul class="keyword-list">
+                <li>Υπόθεση Πυκνότητας-Χρόνου</li>
+                <li>Ενδογενής Μετρική Διαστολή Χρόνου</li>
+                <li>Συνάρτηση Lapse</li>
+                <li>Γεωμετροδυναμική</li>
+                <li>Τροποποιημένες Εξισώσεις Friedmann</li>
+                <li>Χαλάρωση Χρόνου (Time Relaxation)</li>
+                <li>Πρόβλημα του Ορίζοντα</li>
+                <li>Πρόβλημα Επιπεδότητας</li>
+                <li>Σκοτεινή Ενέργεια</li>
+                <li>Σχηματισμός Δομών</li>
+                <li>Αναδυόμενος Χρόνος</li>
+                <li>Big Bang</li>
+                <li>Πρωταρχική Πυρηνοσύνθεση (BBN)</li>
+                <li>Κβαντική Βαρύτητα</li>
+            </ul>
+        </div>
 
         <div class="sidebar-label">Document Info</div>
         <div class="info-text">
             <strong>Published:</strong> 2025<br>
             <strong>Type:</strong> Theoretical Paper<br>
-            
             <strong>DOI:</strong> <br>
             <a href="https://doi.org/10.6084/m9.figshare.31029655" class="doi-link" target="_blank">10.6084/m9.figshare.31029655</a>
             <br><br>
@@ -246,28 +289,81 @@
             Copyright &copy; 2026<br>
             Ioannis Konstantinos Alonidis
         </div>
-
     </aside>
 
     <main class="content">
-        <h1>Intrinsic Metric Time Dilation in Early and Late Cosmology</h1>
         
-        <div class="subtitle">
-            A Geometrodynamic Solution to the Horizon, Flatness, and Dark Energy Problems
-        </div>
-        
-        <span class="abstract-label">Abstract</span>
-        <div class="abstract-text">
-            <p>This work postulates a fundamental and far-reaching modification of the established standard model of cosmology (ΛCDM). The aim is to eliminate the theoretical necessity of a hypothetical scalar Inflaton field, which serves as the primary mechanism for solving initial value problems in modern cosmology, and to replace it with a purely geometric solution.</p>
-            <p>Based on the profound ontological premise that time is not a fundamental background parameter but an emergent property of the spatial fabric (introduced here as the "Density-Time Hypothesis"), a direct, analytical coupling between the local energy density ρ and the time component of the metric tensor g<sub>00</sub> is formulated.</p>
-            <p>It is mathematically rigorously derived within this work that in the limit V → 0 (i.e., in the Planck era), an asymptotic metric time dilation occurs (N ≫ 1). This dilation increases the effective causal horizon d<sub>H,eff</sub> massively. This enables thermodynamic equilibrium across the entire currently observable region of the universe without postulating a superluminal expansion of space.</p>
-            <p>Furthermore, it is shown that a dynamic time gradient Ṅ/N exists, acting relative to the metric expansion of space. This gradient forces a freeze-out of primordial quantum fluctuations, thus providing a natural explanation for structure formation.</p>
-            <p>The work also extends the model to the late universe: The observed apparent acceleration is identified as a geometric residue of time relaxation. A quantitative analysis constrains the exponent n of the Lapse function to the range 1 ≤ n ≤ 2 to preserve Primordial Nucleosynthesis (BBN).</p>
+        <div lang="en">
+            <h1>Intrinsic Metric Time Dilation in Early and Late Cosmology</h1>
+            <div class="subtitle">A Geometrodynamic Solution to the Horizon, Flatness, and Dark Energy Problems</div>
+            
+            <span class="abstract-label">Abstract</span>
+            <div class="abstract-text">
+                <p>This work postulates a fundamental and far-reaching modification of the established standard model of cosmology (ΛCDM). The aim is to eliminate the theoretical necessity of a hypothetical scalar Inflaton field, which serves as the primary mechanism for solving initial value problems in modern cosmology, and to replace it with a purely geometric solution.</p>
+                <p>Based on the profound ontological premise that time is not a fundamental background parameter but an emergent property of the spatial fabric (introduced here as the "Density-Time Hypothesis"), a direct, analytical coupling between the local energy density ρ and the time component of the metric tensor g<sub>00</sub> is formulated.</p>
+                <p>It is mathematically rigorously derived within this work that in the limit V → 0 (i.e., in the Planck era), an asymptotic metric time dilation occurs (N ≫ 1). This dilation increases the effective causal horizon d<sub>H,eff</sub> massively. This enables thermodynamic equilibrium across the entire currently observable region of the universe without postulating a superluminal expansion of space.</p>
+                <p>The work also extends the model to the late universe: The observed apparent acceleration is identified as a geometric residue of time relaxation. A quantitative analysis constrains the exponent n of the Lapse function to the range 1 ≤ n ≤ 2 to preserve Primordial Nucleosynthesis (BBN).</p>
+            </div>
+            <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Download Full Paper (PDF)</a>
         </div>
 
-        <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Download Full Paper (PDF)</a>
+        <div lang="de">
+            <h1>Intrinsische Metrische Zeitdilatation in der frühen und späten Kosmologie</h1>
+            <div class="subtitle">Eine geometrodynamische Lösung für das Horizont-, Flachheits- und Dunkle-Energie-Problem</div>
+            
+            <span class="abstract-label">Zusammenfassung</span>
+            <div class="abstract-text">
+                <p>Diese Arbeit postuliert eine fundamentale Modifikation des etablierten Standardmodells der Kosmologie (ΛCDM). Ziel ist es, die theoretische Notwendigkeit eines hypothetischen skalaren Inflaton-Feldes, das als primärer Mechanismus zur Lösung von Anfangswertproblemen dient, zu eliminieren und durch eine rein geometrische Lösung zu ersetzen.</p>
+                <p>Basierend auf der ontologischen Prämisse, dass Zeit kein fundamentaler Hintergrundparameter, sondern eine emergente Eigenschaft des Raumes ist (hier als "Dichte-Zeit-Hypothese" eingeführt), wird eine direkte, analytische Kopplung zwischen der lokalen Energiedichte ρ und der Zeitkomponente des metrischen Tensors g<sub>00</sub> formuliert.</p>
+                <p>Es wird mathematisch rigoros hergeleitet, dass im Grenzwert V → 0 (d.h. in der Planck-Ära) eine asymptotische metrische Zeitdilatation auftritt (N ≫ 1). Diese Dilatation vergrößert den effektiven Kausalhorizont d<sub>H,eff</sub> massiv. Dies ermöglicht ein thermodynamisches Gleichgewicht über den gesamten heute beobachtbaren Bereich des Universums, ohne eine überlichtschnelle Expansion des Raumes postulieren zu müssen.</p>
+                <p>Die Arbeit erweitert das Modell auch auf das späte Universum: Die beobachtete scheinbare Beschleunigung wird als geometrisches Residuum der Zeit-Relaxation identifiziert. Eine quantitative Analyse beschränkt den Exponenten n der Lapse-Funktion auf den Bereich 1 ≤ n ≤ 2, um die Primordiale Nukleosynthese (BBN) zu bewahren.</p>
+            </div>
+            <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Vollständiges Paper herunterladen (PDF)</a>
+        </div>
+
+        <div lang="el">
+            <h1>Ενδογενής Μετρική Διαστολή Χρόνου στην Πρώιμη και Ύστερη Κοσμολογία</h1>
+            <div class="subtitle">Μια Γεωμετροδυναμική Λύση για τα Προβλήματα του Ορίζοντα, της Επιπεδότητας και της Σκοτεινής Ενέργειας</div>
+            
+            <span class="abstract-label">Περίληψη</span>
+            <div class="abstract-text">
+                <p>Η παρούσα εργασία προτείνει μια θεμελιώδη τροποποίηση του καθιερωμένου προτύπου της κοσμολογίας (ΛCDM). Στόχος είναι να εξαλειφθεί η θεωρητική ανάγκη για το υποθετικό βαθμωτό πεδίο Inflaton και να αντικατασταθεί με μια αμιγώς γεωμετρική λύση.</p>
+                <p>Βασιζόμενη στην οντολογική υπόθεση ότι ο χρόνος δεν είναι μια θεμελιώδης παράμετρος υποβάθρου αλλά μια αναδυόμενη ιδιότητα του χώρου (εισάγεται εδώ ως "Υπόθεση Πυκνότητας-Χρόνου"), διατυπώνεται μια άμεση, αναλυτική σύζευξη μεταξύ της τοπικής πυκνότητας ενέργειας ρ και της χρονικής συνιστώσας του μετρικού τανυστή g<sub>00</sub>.</p>
+                <p>Αποδεικνύεται μαθηματικά ότι στο όριο V → 0 (δηλαδή στην εποχή Planck), εμφανίζεται μια ασυμπτωτική μετρική διαστολή χρόνου (N ≫ 1). Αυτή η διαστολή αυξάνει τον αποτελεσματικό αιτιώδη ορίζοντα d<sub>H,eff</sub> μαζικά. Αυτό επιτρέπει τη θερμοδυναμική ισορροπία σε ολόκληρη την παρατηρήσιμη περιοχή του σύμπαντος χωρίς να απαιτείται υπερφωτεινή διαστολή του χώρου.</p>
+                <p>Η εργασία επεκτείνει επίσης το μοντέλο στο ύστερο σύμπαν: Η παρατηρούμενη φαινομενική επιτάχυνση αναγνωρίζεται ως γεωμετρικό κατάλοιπο της χαλάρωσης του χρόνου (time relaxation). Μια ποσοτική ανάλυση περιορίζει τον εκθέτη n της συνάρτησης Lapse στο εύρος 1 ≤ n ≤ 2 για τη διατήρηση της Πρωταρχικής Πυρηνοσύνθεσης (BBN).</p>
+            </div>
+            <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Λήψη πλήρους εγγράφου (PDF)</a>
+        </div>
+
     </main>
 </div>
+
+<script>
+    function switchLang(lang) {
+        // 1. Alle Sprachen ausblenden
+        document.querySelectorAll('[lang="en"], [lang="de"], [lang="el"]').forEach(el => {
+            if (el.tagName === 'DIV' || el.tagName === 'SPAN') { // Nur unsere Container
+                el.style.display = 'none';
+            }
+        });
+
+        // 2. Gewählte Sprache einblenden
+        document.querySelectorAll(`[lang="${lang}"]`).forEach(el => {
+             el.style.display = 'block';
+        });
+
+        // 3. Buttons aktualisieren (Fettgedruckt/Unterstrichen)
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.innerText.toLowerCase() === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // Beim Starten Englisch anzeigen (Standard)
+    switchLang('en');
+</script>
 
 </body>
 </html>
