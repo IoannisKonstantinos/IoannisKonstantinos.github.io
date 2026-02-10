@@ -85,7 +85,7 @@
             width: 80px;
             height: 80px;
             stroke: #111;
-            stroke-width: 2; /* Etwas deutlicher für die Ansicht */
+            stroke-width: 2;
             fill: none;
         }
         .author-name {
@@ -141,6 +141,13 @@
             padding-top: 15px;
             line-height: 1.4;
         }
+        .legal-link {
+            display: block;
+            margin-top: 10px;
+            color: #888;
+            text-decoration: underline;
+            cursor: pointer;
+        }
 
         .content { padding-top: 10px; }
 
@@ -194,18 +201,18 @@
         }
         .modal-content {
             background-color: #fff; padding: 30px; border: 1px solid #888;
-            width: 90%; max-width: 600px; position: relative; font-family: monospace; font-size: 0.9rem;
+            width: 90%; max-width: 600px; position: relative; font-family: 'Inter', sans-serif; font-size: 0.9rem;
         }
         .close-modal {
             position: absolute; top: 10px; right: 15px; font-size: 24px; font-weight: bold; cursor: pointer; font-family: sans-serif;
         }
         .bibtex-code {
             background-color: #f0f0f0; padding: 15px; border: 1px solid #ccc;
-            white-space: pre-wrap; word-wrap: break-word; margin-top: 10px; color: #333;
+            white-space: pre-wrap; word-wrap: break-word; margin-top: 10px; color: #333; font-family: monospace;
         }
 
         /* Helper: Hide elements */
-        [lang="de"], [lang="el"] { display: none; }
+        [lang="el"] { display: none; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 800px) {
@@ -222,7 +229,7 @@
             .keyword-list li { border-bottom-color: #333; color: #ccc; }
             .copyright-box { border-top-color: #333; }
             @media (max-width: 800px) { .sidebar { border-bottom-color: #333; } }
-            .subtitle, .author-title, .info-text, .copyright-box { color: #b0b0b0; }
+            .subtitle, .author-title, .info-text, .copyright-box, .legal-link { color: #b0b0b0; }
             .abstract-text { color: #d0d0d0; }
             .geo-symbol { stroke: #e0e0e0; }
             .doi-link { color: #8ab4f8; } 
@@ -253,7 +260,6 @@
     
     <div class="lang-switch">
         <span class="lang-btn active" onclick="switchLang('en')">EN</span>
-        <span class="lang-btn" onclick="switchLang('de')">DE</span>
         <span class="lang-btn" onclick="switchLang('el')">EL</span>
     </div>
 
@@ -289,25 +295,6 @@
                 <li>Quantum Gravity</li>
             </ul>
         </div>
-        <div lang="de">
-            <div class="sidebar-label">Schlüsselwörter</div>
-            <ul class="keyword-list">
-                <li>Dichte-Zeit-Hypothese</li>
-                <li>Intrinsische Metrische Zeitdilatation</li>
-                <li>Lapse-Funktion</li>
-                <li>Geometrodynamik</li>
-                <li>Modifizierte Friedmann-Gleichungen</li>
-                <li>Zeit-Relaxation</li>
-                <li>Horizontproblem</li>
-                <li>Flachheitsproblem</li>
-                <li>Dunkle Energie</li>
-                <li>Strukturbildung</li>
-                <li>Emergente Zeit</li>
-                <li>Urknall</li>
-                <li>Primordiale Nukleosynthese (BBN)</li>
-                <li>Quantengravitation</li>
-            </ul>
-        </div>
         <div lang="el">
             <div class="sidebar-label">Λέξεις-Κλειδιά</div>
             <ul class="keyword-list">
@@ -337,7 +324,11 @@
             <br><br>
             <strong>License:</strong> Open Access
         </div>
-        <div class="copyright-box">Copyright &copy; 2026<br>Ioannis Konstantinos Alonidis</div>
+        <div class="copyright-box">
+            Copyright &copy; 2026<br>
+            Ioannis Konstantinos Alonidis<br>
+            <span class="legal-link" onclick="openLegalModal()">Legal & Privacy</span>
+        </div>
     </aside>
 
     <main class="content">
@@ -354,21 +345,6 @@
             <div class="button-group">
                 <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Download PDF</a>
                 <button class="btn btn-secondary" onclick="openModal()">Cite Paper</button>
-            </div>
-        </div>
-
-        <div lang="de">
-            <h1>Intrinsische Metrische Zeitdilatation in der frühen und späten Kosmologie</h1>
-            <div class="subtitle">Eine geometrodynamische Lösung für das Horizont-, Flachheits- und Dunkle-Energie-Problem</div>
-            <span class="abstract-label">Zusammenfassung</span>
-            <div class="abstract-text">
-                <p>Diese Arbeit postuliert eine fundamentale Modifikation des etablierten Standardmodells der Kosmologie (ΛCDM). Ziel ist es, die Inflaton-Feld-Hypothese durch eine rein geometrische Lösung zu ersetzen.</p>
-                <p>Basierend auf der "Dichte-Zeit-Hypothese" wird eine direkte Kopplung zwischen der lokalen Energiedichte ρ und der Zeitkomponente des metrischen Tensors g<sub>00</sub> formuliert.</p>
-                <p>Es wird hergeleitet, dass in der Planck-Ära eine asymptotische metrische Zeitdilatation auftritt, die den effektiven Kausalhorizont massiv vergrößert und ein thermodynamisches Gleichgewicht ermöglicht.</p>
-            </div>
-            <div class="button-group">
-                <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">PDF Herunterladen</a>
-                <button class="btn btn-secondary" onclick="openModal()">Zitieren / BibTeX</button>
             </div>
         </div>
 
@@ -392,7 +368,7 @@
 
 <div id="citeModal" class="modal">
     <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <span class="close-modal" onclick="closeModal('citeModal')">&times;</span>
         <strong>BibTeX Entry</strong>
         <div class="bibtex-code">@article{Alonidis2026,
   author = {Alonidis, Ioannis Konstantinos},
@@ -406,9 +382,29 @@
     </div>
 </div>
 
+<div id="legalModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('legalModal')">&times;</span>
+        <h3 style="margin-top:0">Legal Notice & Privacy</h3>
+        <p><strong>Contact Information:</strong></p>
+        <p>
+            Ioannis Konstantinos Alonidis<br>
+            Prometheus 10<br>
+            66100-Drama<br>
+            Greece
+        </p>
+        <p><strong>Email:</strong> ioannis-konstantinos@gmx.de</p>
+        <hr style="border:0; border-top:1px solid #eee; margin: 20px 0;">
+        <p><strong>Privacy Policy:</strong></p>
+        <p style="font-size: 0.85rem; line-height: 1.5;">
+            This website is hosted via GitHub Pages. Please note that GitHub may collect log files (including IP addresses) for security and operational purposes. I do not store, track, or process any personal data from my visitors myself.
+        </p>
+    </div>
+</div>
+
 <script>
     function switchLang(lang) {
-        document.querySelectorAll('[lang="en"], [lang="de"], [lang="el"]').forEach(el => {
+        document.querySelectorAll('[lang="en"], [lang="el"]').forEach(el => {
             if (el.tagName === 'DIV' || el.tagName === 'SPAN') el.style.display = 'none';
         });
         document.querySelectorAll(`[lang="${lang}"]`).forEach(el => el.style.display = 'block');
@@ -419,9 +415,21 @@
     }
 
     function openModal() { document.getElementById('citeModal').style.display = 'flex'; }
-    function closeModal() { document.getElementById('citeModal').style.display = 'none'; }
+    function openLegalModal() { document.getElementById('legalModal').style.display = 'flex'; }
+    
+    function closeModal(modalId) { 
+        if(modalId) {
+            document.getElementById(modalId).style.display = 'none'; 
+        } else {
+            document.getElementById('citeModal').style.display = 'none';
+            document.getElementById('legalModal').style.display = 'none';
+        }
+    }
+
     window.onclick = function(event) {
-        if (event.target == document.getElementById('citeModal')) closeModal();
+        if (event.target.className === 'modal') {
+            event.target.style.display = 'none';
+        }
     }
 
     switchLang('en');
