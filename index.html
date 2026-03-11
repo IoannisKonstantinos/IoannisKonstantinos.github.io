@@ -5,192 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Intrinsic Metric Time Dilation: A Geometrodynamic Solution to the Horizon, Flatness, and Dark Energy Problems. Theoretical Paper by Ioannis Konstantinos Alonidis.">
     <title>Intrinsic Metric Time Dilation | Ioannis Konstantinos Alonidis</title>
-    
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250 5, 90 25, 90 75, 50 95, 10 75, 10 25%22 style=%22fill:none;stroke:black;stroke-width:5%22/><line x1=%2250%22 y1=%225%22 x2=%2250%22 y2=%2250%22 style=%22stroke:black;stroke-width:5%22/><line x1=%2290%22 y1=%2275%22 x2=%2250%22 y2=%2250%22 style=%22stroke:black;stroke-width:5%22/><line x1=%2210%22 y1=%2275%22 x2=%2250%22 y2=%2250%22 style=%22stroke:black;stroke-width:5%22/></svg>">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "headline": "Intrinsic Metric Time Dilation in Early and Late Cosmology",
+      "author": {
+        "@type": "Person",
+        "name": "Ioannis Konstantinos Alonidis"
+      },
+      "datePublished": "2026",
+      "description": "A Geometrodynamic Solution to the Horizon, Flatness, and Dark Energy Problems without Inflation.",
+      "sameAs": "https://doi.org/10.6084/m9.figshare.31029655"
+    }
+    </script>
+
     <style>
+        /* --- SYSTEM FONT STACK (Datenschutzkonform & schnell) --- */
+        /* --- SYSTEM FONT STACK (Privacy-safe & High Performance) --- */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
             background-color: #f9f9f9;
-            color: #111;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        .page-wrapper {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 60px;
-            max-width: 1100px;
-            margin: 60px 20px;
-            width: 100%;
+@@ -45,7 +45,7 @@
             position: relative;
         }
+
+        /* --- SPRACHUMSCHALTER --- */
+        /* --- LANGUAGE SWITCHER --- */
         .lang-switch {
             position: absolute;
             top: 0;
-            right: 0;
-            display: flex;
-            gap: 10px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        .lang-btn { cursor: pointer; opacity: 0.4; transition: 0.3s; }
-        .lang-btn.active { opacity: 1; text-decoration: underline; }
-
-        .sidebar { border-right: 1px solid #e0e0e0; padding-right: 30px; }
-        .geo-symbol { width: 80px; height: 80px; stroke: #111; stroke-width: 2; fill: none; margin-bottom: 30px; }
-        .author-name { font-family: "Iowan Old Style", serif; font-size: 1.3rem; font-weight: bold; margin-bottom: 5px; }
-        .author-title { font-size: 0.85rem; color: #666; text-transform: uppercase; margin-bottom: 30px; }
-        .sidebar-label { font-size: 0.7rem; text-transform: uppercase; color: #999; margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px; font-weight: bold; }
-        .keyword-list { list-style: none; padding: 0; margin: 0; }
-        .keyword-list li { font-size: 0.85rem; color: #444; margin-bottom: 6px; border-bottom: 1px solid #f4f4f4; padding-bottom: 2px; }
-
-        main { padding-top: 10px; }
-        h1 { font-family: "Iowan Old Style", serif; font-size: 2.5rem; line-height: 1.1; margin-top: 0; }
-        .subtitle { font-size: 1.2rem; font-weight: 300; color: #555; margin-bottom: 40px; }
-        .abstract-label { font-weight: bold; text-transform: uppercase; font-size: 0.9rem; border-bottom: 2px solid #000; margin-bottom: 20px; display: inline-block; }
-        .abstract-text { font-size: 1.1rem; line-height: 1.8; text-align: justify; }
-
-        .button-group { margin-top: 40px; display: flex; gap: 15px; flex-wrap: wrap; }
-        .btn { background: #111; color: #fff; padding: 12px 25px; text-decoration: none; font-weight: bold; border: 1px solid #111; transition: 0.3s; cursor: pointer; }
-        .btn:hover { background: #fff; color: #111; }
-        .btn-secondary { background: transparent; color: #111; }
-
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background: #fff; padding: 30px; max-width: 600px; width: 90%; position: relative; }
-        .bibtex-code { background: #f4f4f4; padding: 15px; font-family: monospace; font-size: 0.8rem; white-space: pre-wrap; margin-top: 15px; }
-
-        [lang="el"] { display: none; }
-        [lang="en"] { display: block; }
-
-        @media (max-width: 800px) {
-            .page-wrapper { grid-template-columns: 1fr; margin-top: 80px; }
-            .sidebar { border-right: none; border-bottom: 1px solid #eee; padding-bottom: 30px; }
-        }
-    </style>
-</head>
-<body>
-
-<div class="page-wrapper">
-    <div class="lang-switch">
-        <span id="btn-en" class="lang-btn active" onclick="switchLang('en')">EN</span>
-        <span id="btn-el" class="lang-btn" onclick="switchLang('el')">EL</span>
-    </div>
-
-    <aside class="sidebar">
-        <svg class="geo-symbol" viewBox="0 0 100 100">
-            <polygon points="50 5, 90 25, 90 75, 50 95, 10 75, 10 25" />
-            <line x1="50" y1="5" x2="50" y2="50" />
-            <line x1="90" y1="75" x2="50" y2="50" />
-            <line x1="10" y1="75" x2="50" y2="50" />
-        </svg>
-
-        <div lang="en">
-            <div class="author-name">Ioannis Konstantinos Alonidis</div>
-            <div class="author-title">Medical Laboratory Technician</div>
-            <div class="sidebar-label">Keywords</div>
-            <ul class="keyword-list">
-                <li>Density-Time Hypothesis</li>
-                <li>Intrinsic Metric Time Dilation</li>
-                <li>Geometrodynamics</li>
-                <li>Dark Energy</li>
-                <li>Quantum Gravity</li>
-            </ul>
-        </div>
-
-        <div lang="el">
-            <div class="author-name">Ἰωάννης Κωνσταντῖνος Ἀλωνίδης</div>
-            <div class="author-title">Τεχνολόγος Ἰατρικῶν Ἐργαστηρίων</div>
-            <div class="sidebar-label">Λέξεις-Κλειδιά</div>
-            <ul class="keyword-list">
-                <li>Ὑπόθεση Πυκνότητας-Χρόνου</li>
-                <li>Μετρικὴ Συστολὴ Χρόνου</li>
-                <li>Γεωμετροδυναμική</li>
-                <li>Σκοτεινὴ Ἐνέργεια</li>
-                <li>Κβαντικὴ Βαρύτητα</li>
-            </ul>
-        </div>
-
-        <div class="sidebar-label">Links</div>
-        <div style="font-size: 0.85rem; line-height: 1.6;">
-            DOI: <a href="https://doi.org/10.6084/m9.figshare.31029655" target="_blank" style="color:inherit;">10.6084/m9.figshare.31029655</a><br><br>
-            <span style="cursor:pointer; text-decoration:underline; color:#999;" onclick="openLegal()">Legal & Privacy</span>
-        </div>
-    </aside>
-
-    <main>
-        <div lang="en">
-            <h1>Intrinsic Metric Time Dilation in Early and Late Cosmology</h1>
-            <div class="subtitle">A Geometrodynamic Solution to the Horizon, Flatness, and Dark Energy Problems</div>
-            <span class="abstract-label">Abstract</span>
-            <div class="abstract-text">
-                <p>This work postulates a fundamental modification of the established standard model of cosmology (ΛCDM). The aim is to eliminate the theoretical necessity of a hypothetical scalar Inflaton field and to replace it with a purely geometric solution.</p>
-                <p>Based on the "Density-Time Hypothesis", a direct, analytical coupling between the local energy density &rho; and the time component of the metric tensor g<sub>00</sub> is formulated.</p>
-                <p>It is derived that in the Planck era, an asymptotic metric time dilation occurs (N &gt;&gt; 1), increasing the effective causal horizon massively. This enables thermodynamic equilibrium across the universe without postulating superluminal expansion.</p>
-            </div>
-            <div class="button-group">
-                <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Download PDF</a>
-                <button class="btn btn-secondary" onclick="openCite()">Cite BibTeX</button>
-            </div>
-        </div>
-
-        <div lang="el">
-            <h1>Ἐνδογενὴς Μετρικὴ Συστολὴ τοῦ Χρόνου στὴν Πρώιμη καὶ Ὄψιμη Κοσμολογία</h1>
-            <div class="subtitle">Μιὰ Γεωμετροδυναμικὴ Λύση γιὰ τὰ Προβλήματα τοῦ Ὁρίζοντα, τῆς Ἐπιπεδότητας καὶ τῆς Σκοτεινῆς Ἐνέργειας</div>
-            <span class="abstract-label">Περίληψη</span>
-            <div class="abstract-text">
-                <p>Ἡ παροῦσα ἐργασία προτείνει μιὰ θεμελιώδη τροποποίηση τοῦ καθιερωμένου προτύπου τῆς κοσμολογίας (ΛCDM). Στόχος εἶναι ἡ ἐξάλειψη τῆς θεωρητικῆς ἀναγκαιότητας ἑνὸς ὑποθετικοῦ βαθμωτοῦ πεδίου Inflaton καὶ ἡ ἀντικατάστασή του μὲ μιὰ ἀμιγῶς γεωμετρικὴ λύση.</p>
-                <p>Βασισμένη στὴν «Ὑπόθεση Πυκνότητας-Χρόνου», διατυπώνεται μιὰ ἄμεση σύζευξη μεταξὺ τῆς ἐνεργειακῆς πυκνότητας &rho; καὶ τῆς χρονικῆς συνιστώσας τοῦ μετρικοῦ τανυστῆ g<sub>00</sub>.</p>
-                <p>Ἀποδεικνύεται ὅτι στὴν ἐποχὴ Planck ἐμφανίζεται μιὰ ἀσυμπτωτικὴ μετρικὴ συστολὴ τοῦ χρόνου (N &gt;&gt; 1), ἡ ὁποία αὐξάνει μαζικὰ τὸν αἰτιώδη ὁρίζοντα, ἐπιτρέποντας θερμοδυναμικὴ ἰσορροπία χωρὶς τὴν παραδοχὴ ὑπερφωτεινῆς διαστολῆς τοῦ χώρου.</p>
-            </div>
-            <div class="button-group">
-                <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation_EL.pdf" class="btn" target="_blank">Λήψη PDF (GR)</a>
-                <button class="btn btn-secondary" onclick="openCite()">Παράθεση / BibTeX</button>
-            </div>
-        </div>
-    </main>
-</div>
-
-<div id="citeModal" class="modal" onclick="closeModals()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <strong>BibTeX Entry</strong>
-        <div class="bibtex-code">@article{Alonidis2026,
-  author = {Alonidis, Ioannis Konstantinos},
-  title = {Intrinsic Metric Time Dilation in Early and Late Cosmology},
-  year = {2026},
-  doi = {10.6084/m9.figshare.31029655}
-}</div>
-        <button onclick="closeModals()" style="margin-top:15px; cursor:pointer;">Close</button>
+@@ -393,7 +393,7 @@
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('legalModal')">&times;</span>
+        <h3 style="margin-top:0">Legal Notice & Privacy</h3>
+        <p><strong>Contact Information:</strong></p>
+        <p><strong>Operator & Responsible for Content:</strong></p>
+        <p>
+            Ioannis Konstantinos Alonidis<br>
+            Prometheus 10<br>
+@@ -404,7 +404,8 @@
+        <hr style="border:0; border-top:1px solid #eee; margin: 20px 0;">
+        <p><strong>Privacy Policy:</strong></p>
+        <p style="font-size: 0.85rem; line-height: 1.5;">
+            This website is hosted via GitHub Pages. For technical reasons, GitHub may collect log files (including IP addresses) to provide the service and ensure security. I do not use cookies, tracking tools, or external fonts (like Google Fonts) that would transfer your data to third parties.
+            <strong>Data Processing:</strong> This website is hosted via GitHub Pages (GitHub, Inc., USA). GitHub may collect server log files (including IP addresses) for technical and security purposes. This is a technical necessity for hosting.<br><br>
+            <strong>Privacy by Design:</strong> I do not store, track, or process any personal data. This website does not use cookies, tracking scripts, or analytics tools. To protect your privacy, this site does not load external fonts (e.g. Google Fonts) or third-party assets.
+        </p>
     </div>
 </div>
-
-<div id="legalModal" class="modal" onclick="closeModals()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <h3>Legal Notice & Privacy</h3>
-        <p>Ioannis Konstantinos Alonidis<br>Prometheus 10, 66100 Drama, Greece</p>
-        <p><strong>Privacy:</strong> Hosted via GitHub Pages. No cookies, no tracking, no Google Fonts.</p>
-        <button onclick="closeModals()" style="cursor:pointer;">Close</button>
-    </div>
-</div>
-
-<script>
-    function switchLang(lang) {
-        document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = (lang === 'en' ? 'block' : 'none'));
-        document.querySelectorAll('[lang="el"]').forEach(el => el.style.display = (lang === 'el' ? 'block' : 'none'));
-        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-        document.getElementById('btn-el').classList.toggle('active', lang === 'el');
-    }
-    function openCite() { document.getElementById('citeModal').style.display = 'flex'; }
-    function openLegal() { document.getElementById('legalModal').style.display = 'flex'; }
-    function closeModals() { 
-        document.getElementById('citeModal').style.display = 'none'; 
-        document.getElementById('legalModal').style.display = 'none'; 
-    }
-    // Standardmäßig Englisch
-    window.onload = function() { switchLang('en'); };
-</script>
-
-</body>
-</html>
