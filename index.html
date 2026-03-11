@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ἐνδογενὴς Μετρικὴ Συστολὴ τοῦ Χρόνου: Μιὰ Γεωμετροδυναμικὴ Λύση γιὰ τὰ Προβλήματα τοῦ Ὁρίζοντα, τῆς Ἐπιπεδότητας καὶ τῆς Σκοτεινῆς Ἐνέργειας.">
+    <meta name="description" content="Intrinsic Metric Time Dilation: A Geometrodynamic Solution to the Horizon, Flatness, and Dark Energy Problems. Theoretical Paper by Ioannis Konstantinos Alonidis.">
     <title>Intrinsic Metric Time Dilation | Ioannis Konstantinos Alonidis</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250 5, 90 25, 90 75, 50 95, 10 75, 10 25%22 style=%22fill:none;stroke:black;stroke-width:5%22/><line x1=%2250%22 y1=%225%22 x2=%2250%22 y2=%2250%22 style=%22stroke:black;stroke-width:5%22/><line x1=%2290%22 y1=%2275%22 x2=%2250%22 y2=%2250%22 style=%22stroke:black;stroke-width:5%22/><line x1=%2210%22 y1=%2275%22 x2=%2250%22 y2=%2250%22 style=%22stroke:black;stroke-width:5%22/></svg>">
@@ -24,9 +24,9 @@
     </script>
 
     <style>
-        /* --- SYSTEM FONT STACK (Privacy-safe & High Performance) --- */
+        /* --- SYSTEM FONT STACK (Privacy-safe & No Google Fonts) --- */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f9f9f9;
             color: #111;
             margin: 0;
@@ -45,6 +45,7 @@
             position: relative;
         }
 
+        /* --- LANGUAGE SWITCHER --- */
         .lang-switch {
             position: absolute;
             top: 0;
@@ -53,6 +54,7 @@
             gap: 10px;
             font-size: 0.85rem;
             font-weight: 600;
+            z-index: 10;
         }
         .lang-btn {
             cursor: pointer;
@@ -60,14 +62,12 @@
             transition: 0.3s;
             text-transform: uppercase;
         }
-        .lang-btn:hover { opacity: 0.7; }
         .lang-btn.active { opacity: 1; text-decoration: underline; }
 
+        /* --- SIDEBAR --- */
         .sidebar {
             border-right: 1px solid #e0e0e0;
             padding-right: 30px;
-            display: flex;
-            flex-direction: column;
         }
         .geo-symbol {
             width: 80px;
@@ -78,104 +78,89 @@
             margin-bottom: 30px;
         }
         .author-name {
-            font-family: "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, "Source Serif Pro", serif;
+            font-family: "Iowan Old Style", "Apple Garamond", "Baskerville", serif;
             font-size: 1.3rem;
-            margin-bottom: 5px;
             font-weight: bold;
             line-height: 1.2;
+            margin-bottom: 5px;
         }
         .author-title {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 30px;
-            font-weight: 500;
+            font-size: 0.85rem;
+            color: #666;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin-bottom: 30px;
         }
         .sidebar-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: #999;
-            margin-bottom: 15px;
             margin-top: 30px;
-            font-weight: 600;
+            margin-bottom: 10px;
+            font-weight: bold;
             border-top: 1px solid #eee;
-            padding-top: 20px;
+            padding-top: 15px;
         }
         .keyword-list { list-style: none; padding: 0; margin: 0; }
-        .keyword-list li { 
-            font-size: 0.85rem; 
-            color: #444; 
-            margin-bottom: 6px;
-            border-bottom: 1px solid #f4f4f4; 
-            padding-bottom: 2px; 
-            line-height: 1.4;
-        }
-        .info-text { font-size: 0.9rem; color: #555; line-height: 1.6; }
-        .doi-link { color: #111; text-decoration: underline; word-break: break-all; }
+        .keyword-list li { font-size: 0.85rem; color: #444; margin-bottom: 5px; }
 
+        /* --- CONTENT --- */
+        main { padding-top: 10px; }
         h1 { 
-            font-family: "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, "Source Serif Pro", serif;
-            font-size: 2.8rem; 
-            margin-top: 0; 
-            line-height: 1.1; 
-            margin-bottom: 15px;
+            font-family: "Iowan Old Style", "Apple Garamond", "Baskerville", serif;
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-top: 0;
         }
-        .subtitle { font-size: 1.25rem; font-weight: 300; color: #555; margin-bottom: 40px; line-height: 1.5; }
-        .abstract-label { font-weight: bold; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 15px; display: inline-block; border-bottom: 2px solid #000; padding-bottom: 5px; }
-        .abstract-text { font-size: 1.1rem; line-height: 1.8; color: #222; text-align: justify; font-weight: 300; }
+        .subtitle { font-size: 1.3rem; font-weight: 300; color: #555; margin-bottom: 40px; }
+        .abstract-label { font-weight: bold; text-transform: uppercase; font-size: 0.9rem; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 20px; display: inline-block; }
+        .abstract-text { font-size: 1.1rem; line-height: 1.8; text-align: justify; }
 
-        .button-group { margin-top: 40px; display: flex; gap: 15px; flex-wrap: wrap; }
+        /* --- BUTTONS --- */
+        .button-group { margin-top: 40px; display: flex; gap: 15px; }
         .btn { 
-            display: inline-block; 
-            background-color: #111; 
-            color: #fff; 
-            padding: 15px 35px; 
-            text-decoration: none; 
-            font-weight: 600; 
-            border: 1px solid #111; 
-            transition: 0.3s; 
-            cursor: pointer;
+            background: #111; color: #fff; padding: 12px 25px; 
+            text-decoration: none; font-weight: bold; border: 1px solid #111;
+            transition: 0.3s;
         }
-        .btn:hover { background-color: #fff; color: #111; }
-        .btn-secondary { background-color: transparent; color: #111; }
-        .btn-secondary:hover { background-color: #111; color: #fff; }
+        .btn:hover { background: #fff; color: #111; }
+        .btn-secondary { background: transparent; color: #111; }
 
-        .modal {
-            display: none; position: fixed; z-index: 100; left: 0; top: 0;
-            width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);
-            justify-content: center; align-items: center;
+        /* --- MODALS --- */
+        .modal { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000;
         }
-        .modal-content {
-            background-color: #fff; padding: 30px; border: 1px solid #888;
-            width: 90%; max-width: 600px; position: relative;
-        }
-        .bibtex-code { background-color: #f0f0f0; padding: 15px; border: 1px solid #ccc; font-family: monospace; white-space: pre-wrap; margin-top: 10px; }
+        .modal-content { background: #fff; padding: 30px; max-width: 500px; width: 90%; position: relative; }
+        .bibtex-code { background: #f4f4f4; padding: 15px; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; margin-top: 15px; }
 
+        /* Standardmäßig alle Sprachen verstecken (JS schaltet sie ein) */
+        [lang="en"], [lang="el"] { display: none; }
+
+        /* RESPONSIVE */
         @media (max-width: 800px) {
-            .page-wrapper { grid-template-columns: 1fr; margin: 30px 20px; }
-            .sidebar { border-right: none; border-bottom: 1px solid #e0e0e0; padding-bottom: 30px; }
+            .page-wrapper { grid-template-columns: 1fr; margin-top: 80px; }
+            .sidebar { border-right: none; border-bottom: 1px solid #eee; padding-bottom: 30px; }
         }
 
-        /* DARK MODE */
+        /* DARK MODE support */
         @media (prefers-color-scheme: dark) {
-            body { background-color: #121212; color: #e0e0e0; }
-            .sidebar { border-right-color: #333; }
-            .keyword-list li { border-bottom-color: #333; color: #ccc; }
-            .btn { background-color: #e0e0e0; color: #111; }
-            .modal-content { background-color: #1e1e1e; color: #e0e0e0; }
-            .bibtex-code { background-color: #2a2a2a; color: #bbb; }
+            body { background: #121212; color: #ddd; }
+            .sidebar { border-color: #333; }
+            .geo-symbol { stroke: #ddd; }
+            .btn { background: #ddd; color: #111; }
+            .modal-content { background: #1e1e1e; color: #ddd; }
+            .bibtex-code { background: #2a2a2a; color: #bbb; }
         }
     </style>
 </head>
 <body>
 
 <div class="page-wrapper">
-    
     <div class="lang-switch">
-        <span class="lang-btn active" onclick="switchLang('en')">EN</span>
-        <span class="lang-btn" onclick="switchLang('el')">EL</span>
+        <span id="btn-en" class="lang-btn" onclick="switchLang('en')">EN</span>
+        <span id="btn-el" class="lang-btn" onclick="switchLang('el')">EL</span>
     </div>
 
     <aside class="sidebar">
@@ -192,10 +177,9 @@
             <div class="sidebar-label">Keywords</div>
             <ul class="keyword-list">
                 <li>Density-Time Hypothesis</li>
-                <li>Intrinsic Metric Time Dilation</li>
-                <li>Geometrodynamics</li>
+                <li>Metric Time Dilation</li>
                 <li>Dark Energy</li>
-                <li>Quantum Gravity</li>
+                <li>Geometrodynamics</li>
             </ul>
         </div>
 
@@ -205,53 +189,53 @@
             <div class="sidebar-label">Λέξεις-Κλειδιά</div>
             <ul class="keyword-list">
                 <li>Ὑπόθεση Πυκνότητας-Χρόνου</li>
-                <li>Ενδογενὴς Μετρικὴ Διαστολὴ Χρόνου</li>
-                <li>Γεωμετροδυναμική</li>
+                <li>Μετρικὴ Συστολὴ Χρόνου</li>
                 <li>Σκοτεινὴ Ἐνέργεια</li>
-                <li>Κβαντικὴ Βαρύτητα</li>
+                <li>Γεωμετροδυναμική</li>
             </ul>
         </div>
 
-        <div class="sidebar-label">Document Info</div>
-        <div class="info-text">
-            <strong>Published:</strong> 2026<br>
-            <strong>DOI:</strong> <a href="https://doi.org/10.6084/m9.figshare.31029655" class="doi-link" target="_blank">10.6084/m9.figshare.31029655</a>
+        <div class="sidebar-label">Links</div>
+        <div style="font-size: 0.85rem;">
+            DOI: <a href="https://doi.org/10.6084/m9.figshare.31029655" target="_blank" style="color:inherit;">10.6084/m9.figshare.31029655</a>
+            <br><br>
+            <span style="cursor:pointer; text-decoration:underline; color:#999;" onclick="openLegal()">Legal & Privacy</span>
         </div>
     </aside>
 
-    <main class="content">
+    <main>
         <div lang="en">
             <h1>Intrinsic Metric Time Dilation in Early and Late Cosmology</h1>
             <div class="subtitle">A Geometrodynamic Solution to the Horizon, Flatness, and Dark Energy Problems</div>
             <span class="abstract-label">Abstract</span>
             <div class="abstract-text">
-                <p>This work postulates a fundamental and far-reaching modification of the established standard model of cosmology (ΛCDM)...</p>
+                <p>This work postulates a fundamental modification of the standard model of cosmology ($ \Lambda $CDM). By analytical coupling between local energy density $ \rho $ and the time metric $ g_{00} $, we eliminate the necessity for an Inflaton field.</p>
+                <p>We derive an asymptotic metric time dilation ($ N \gg 1 $) in the Planck era, solving the horizon and flatness problems through geometry instead of superluminal expansion.</p>
             </div>
             <div class="button-group">
                 <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation.pdf" class="btn" target="_blank">Download PDF</a>
-                <button class="btn btn-secondary" onclick="openModal()">Cite Paper</button>
+                <button class="btn btn-secondary" onclick="openCite()">Cite BibTeX</button>
             </div>
         </div>
 
         <div lang="el">
-            <h1>Ἐνδογενὴς Μετρικὴ Διαστολὴ τοῦ Χρόνου στὴν Πρώιμη καὶ Ὄψιμη Κοσμολογία</h1>
+            <h1>Ἐνδογενὴς Μετρικὴ Συστολὴ τοῦ Χρόνου στὴν Πρώιμη καὶ Ὄψιμη Κοσμολογία</h1>
             <div class="subtitle">Μιὰ Γεωμετροδυναμικὴ Λύση γιὰ τὰ Προβλήματα τοῦ Ὁρίζοντα, τῆς Ἐπιπεδότητας καὶ τῆς Σκοτεινῆς Ἐνέργειας</div>
             <span class="abstract-label">Περίληψη</span>
             <div class="abstract-text">
-                <p>Ἡ παροῦσα ἐργασία προτείνει μιὰ θεμελιώδη καὶ εὐρείας κλίμακας τροποποίηση τοῦ καθιερωμένου προτύπου τῆς κοσμολογίας (ΛCDM). Στόχος εἶναι ἡ ἐξάλειψη τῆς θεωρητικῆς ἀναγκαιότητας ἑνὸς ὑποθετικοῦ βαθμωτοῦ πεδίου Inflaton καὶ ἡ ἀντικατάστασή του μὲ μιὰ ἀμιγῶς γεωμετρικὴ λύση.</p>
-                <p>Βασισμένη στὴ βαθιὰ ὀντολογικὴ παραδοχὴ ὅτι ὁ χρόνος δὲν εἶναι μιὰ θεμελιώδης παράμετρος ὑποβάθρου ἀλλὰ μιὰ ἀναδυόμενη ἰδιότητα τοῦ χωρικοῦ ἱστοῦ (εἰσάγεται ὡς <strong>"Ὑπόθεση Πυκνότητας-Χρόνου"</strong>), διατυπώνεται μιὰ ἄμεση σύζευξη μεταξὺ τῆς ἐνεργειακῆς πυκνότητας <i>ρ</i> καὶ τῆς χρονικῆς συνιστώσας τοῦ μετρικοῦ τανυστῆ.</p>
+                <p>Ἡ παροῦσα ἐργασία προτείνει μιὰ θεμελιώδη τροποποίηση τοῦ καθιερωμένου προτύπου τῆς κοσμολογίας ($ \Lambda $CDM). Μέσω τῆς ἀναλυτικῆς σύζευξης μεταξὺ τῆς ἐνεργειακῆς πυκνότητας $ \rho $ καὶ τῆς χρονικής μετρικῆς $ g_{00} $, ἐξαλείφεται ἡ ἀνάγκη γιὰ τὸ πεδίο Inflaton.</p>
+                <p>Ἀποδεικνύεται μιὰ ἀσυμπτωτικὴ μετρικὴ συστολὴ τοῦ χρόνου ($ N \gg 1 $) στὴν ἐποχὴ Planck, ἐπιλύοντας τὰ προβλήματα τοῦ ὁρίζοντα καὶ τῆς ἐπιπεδότητας μέσω τῆς γεωμετρίας.</p>
             </div>
             <div class="button-group">
                 <a href="Alonidis_2025_Intrinsic_Metric_Time_Dilation_EL.pdf" class="btn" target="_blank">Λήψη PDF (GR)</a>
-                <button class="btn btn-secondary" onclick="openModal()">Παράθεση / BibTeX</button>
+                <button class="btn btn-secondary" onclick="openCite()">Παράθεση / BibTeX</button>
             </div>
         </div>
     </main>
 </div>
 
-<div id="citeModal" class="modal">
-    <div class="modal-content">
-        <span style="cursor:pointer; float:right;" onclick="closeModal()">&times;</span>
+<div id="citeModal" class="modal" onclick="closeModals()">
+    <div class="modal-content" onclick="event.stopPropagation()">
         <strong>BibTeX Entry</strong>
         <div class="bibtex-code">@article{Alonidis2026,
   author = {Alonidis, Ioannis Konstantinos},
@@ -259,18 +243,51 @@
   year = {2026},
   doi = {10.6084/m9.figshare.31029655}
 }</div>
+        <button onclick="closeModals()" style="margin-top:15px; cursor:pointer;">Close</button>
+    </div>
+</div>
+
+<div id="legalModal" class="modal" onclick="closeModals()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <h3>Legal Notice</h3>
+        <p>Ioannis Konstantinos Alonidis<br>Prometheus 10, 66100 Drama, Greece</p>
+        <p><strong>Privacy:</strong> This site is hosted by GitHub Pages. No cookies or tracking scripts are used by the author. No external fonts are loaded from Google.</p>
+        <button onclick="closeModals()" style="cursor:pointer;">Close</button>
     </div>
 </div>
 
 <script>
     function switchLang(lang) {
-        document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = (lang === 'en' ? 'block' : 'none'));
-        document.querySelectorAll('[lang="el"]').forEach(el => el.style.display = (lang === 'el' ? 'block' : 'none'));
-        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.innerText.toLowerCase() === lang));
+        // Alle Sprach-Elemente finden
+        const enElements = document.querySelectorAll('[lang="en"]');
+        const elElements = document.querySelectorAll('[lang="el"]');
+        const btnEn = document.getElementById('btn-en');
+        const btnEl = document.getElementById('btn-el');
+
+        if (lang === 'en') {
+            enElements.forEach(el => el.style.display = 'block');
+            elElements.forEach(el => el.style.display = 'none');
+            btnEn.classList.add('active');
+            btnEl.classList.remove('active');
+        } else {
+            enElements.forEach(el => el.style.display = 'none');
+            elElements.forEach(el => el.style.display = 'block');
+            btnEn.classList.remove('active');
+            btnEl.classList.add('active');
+        }
     }
-    function openModal() { document.getElementById('citeModal').style.display = 'flex'; }
-    function closeModal() { document.getElementById('citeModal').style.display = 'none'; }
-    switchLang('en');
+
+    function openCite() { document.getElementById('citeModal').style.display = 'flex'; }
+    function openLegal() { document.getElementById('legalModal').style.display = 'flex'; }
+    function closeModals() { 
+        document.getElementById('citeModal').style.display = 'none'; 
+        document.getElementById('legalModal').style.display = 'none'; 
+    }
+
+    // Starten mit Englisch, sobald die Seite geladen ist
+    document.addEventListener('DOMContentLoaded', () => {
+        switchLang('en');
+    });
 </script>
 
 </body>
